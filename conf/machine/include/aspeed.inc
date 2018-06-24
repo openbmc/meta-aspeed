@@ -4,3 +4,5 @@ PREFERRED_PROVIDER_u-boot ?= "u-boot-aspeed"
 PREFERRED_PROVIDER_u-boot-fw-utils ?= "u-boot-fw-utils-aspeed"
 
 MACHINEOVERRIDES =. "aspeed:"
+
+IMAGE_CLASSES += "image_types_aspeed"

@@ -2,6 +2,10 @@ DESCRIPTION = "Linux kernel for Aspeed"
 SECTION = "kernel"
 LICENSE = "GPLv2"
 
+KERNEL_IMAGETYPE ?= "fitImage"
+KERNEL_CLASSES ?= "kernel-fitimage"
+INITRAMFS_IMAGE ?= "initramfs-aspeed-image"
+
 PROVIDES += "virtual/kernel"
 
 KCONFIG_MODE="--alldefconfig"
