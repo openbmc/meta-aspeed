@@ -1,6 +1,6 @@
-KBRANCH ?= "dev-4.18"
+KBRANCH ?= "video-dev"
 LINUX_VERSION ?= "4.18.12"
 
-SRCREV="b29e57c654b8d7cfa15d632fbc0ebfe0897b8203"
+SRCREV="b953727d56c4de63eb0fad1f079f41004e61d713"
 
 require linux-aspeed.inc
