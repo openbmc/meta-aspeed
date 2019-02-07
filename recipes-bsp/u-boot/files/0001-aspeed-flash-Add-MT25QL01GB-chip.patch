@@ -1,0 +1,48 @@
+From e4fc2c0691eb42906b3a59d84387f4ef854153c4 Mon Sep 17 00:00:00 2001
+From: Adriana Kobylak <anoo@us.ibm.com>
+Date: Mon, 4 Feb 2019 13:37:59 -0600
+Subject: [PATCH] aspeed: flash: Add MT25QL01GB chip
+
+The MT25QL01GB is a 128MB NOR flash chip planned to be used on
+a Witherspoon system (AST2500).
+
+Signed-off-by: Adriana Kobylak <anoo@us.ibm.com>
+---
+ arch/arm/mach-aspeed/flash.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/arch/arm/mach-aspeed/flash.c b/arch/arm/mach-aspeed/flash.c
+index 907e785..54a6059 100644
+--- a/arch/arm/mach-aspeed/flash.c
++++ b/arch/arm/mach-aspeed/flash.c
+@@ -83,6 +83,7 @@ flash_info_t flash_info[CONFIG_SYS_MAX_FLASH_BANKS];		/* FLASH chips info */
+ #define SST25VF040B		0x8d25bf
+ #define AT25DF161		0x02461F
+ #define AT25DF321		0x01471F
++#define MT25QL01GB		0x21ba20
+ 
+ /* SPI Define */
+ #define CS0_CTRL			0x10
+@@ -1141,6 +1142,19 @@ static ulong flash_get_size (ulong base, flash_info_t *info)
+ 			ReadClk  = 50;
+ 			break;
+ 
++		case MT25QL01GB:
++			info->sector_count = 2048;
++			info->size = 0x8000000;
++			erase_region_size  = 0x10000;
++			info->readcmd = 0x0b;
++			info->dualport = 0;
++			info->dummybyte = 1;
++			info->buffersize = 1;
++			WriteClk = 50;
++			EraseClk = 25;
++			ReadClk  = 50;
++			break;
++
+ 		default:	/* use JEDEC ID */
+ 			printf("Unsupported SPI Flash!! 0x%08lx\n", info->flash_id);
+ 			erase_region_size  = 0x10000;
+-- 
+1.8.3.1
+
