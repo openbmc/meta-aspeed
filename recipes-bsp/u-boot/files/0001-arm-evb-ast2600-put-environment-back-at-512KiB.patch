@@ -1,30 +1,34 @@
-From 5cc81108739c8b5eb5679f726ae86e677e9dee65 Mon Sep 17 00:00:00 2001
+From 04e7c16a4a0a6fe64c364cb4924ce1c97ff2cb78 Mon Sep 17 00:00:00 2001
 From: Brad Bishop <bradleyb@fuzziesquirrel.com>
 Date: Thu, 5 Sep 2019 20:39:57 -0400
-Subject: [PATCH] arm: evb-ast2600: put environment back at 512KiB
+Subject: [PATCH v2 u-boot aspeed-dev-v2019.04] arm: evb-ast2600: put
+ environment back at 512KiB
 
 Prior to 473f430b90 the environment was at 512KiB, and compatible with
 OpenBMC.  Restore OpenBMC compatibility by moving the environment back
 to 512KiB.
 
-Upstream-Status: Pending
-Upstream-Status: https://github.com/AspeedTech-BMC/u-boot/pull/1
 Signed-off-by: Brad Bishop <bradleyb@fuzziesquirrel.com>
 ---
- include/configs/evb_ast2600.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v2:
+  -adjusted bootcmd fit address to match new image location
+---
+ include/configs/evb_ast2600.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/include/configs/evb_ast2600.h b/include/configs/evb_ast2600.h
-index b4de42a05a..3a12f2f0d4 100644
+index b4de42a05a..0e5b24de7d 100644
 --- a/include/configs/evb_ast2600.h
 +++ b/include/configs/evb_ast2600.h
-@@ -18,7 +18,7 @@
+@@ -18,7 +18,9 @@
  
  /* Environment */
  #define CONFIG_ENV_SIZE			0x10000
 -#define CONFIG_ENV_OFFSET		0x90000
 +#define CONFIG_ENV_OFFSET		0x60000
  #define CONFIG_ENV_SECT_SIZE		(4 << 10)
++#undef CONFIG_BOOTCOMMAND
++#define CONFIG_BOOTCOMMAND		"bootm 20080000"
  
  #endif	/* __CONFIG_H */
 -- 
