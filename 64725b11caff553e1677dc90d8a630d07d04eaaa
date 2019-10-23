@@ -1,0 +1,8 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+2: Joel Stanley <joel@jms.id.au>
+Submitted-by: Joel Stanley <joel@jms.id.au>
+Submitted-at: Wed, 23 Oct 2019 05:49:15 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/meta-aspeed/+/26434
+Project: openbmc/meta-aspeed
+Branch: refs/heads/master
