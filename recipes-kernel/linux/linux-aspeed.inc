@@ -6,9 +6,10 @@ PROVIDES += "virtual/kernel"
 
 KCONFIG_MODE="--alldefconfig"
 
-SRCREV_FORMAT = "kernel"
+SRCREV_FORMAT = "kernel_meta"
 KSRC ?= "git://github.com/openbmc/linux;protocol=git;branch=${KBRANCH};name=kernel"
 SRC_URI = "${KSRC}"
+SRC_URI += "git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;destsuffix=kernel-meta;name=meta"
 SRC_URI += " file://defconfig"
 
 LINUX_VERSION_EXTENSION ?= "-${SRCREV_kernel}"
