@@ -1,6 +1,6 @@
-KBRANCH ?= "dev-5.4"
+KBRANCH ?= "dev-5.4-romulus-and-zaius-gpio-names"
 LINUX_VERSION ?= "5.4.21"
 
-SRCREV="3589f2ee8207e6fdc8c0633b1965dd280a536282"
+SRCREV="35d33d50de54bcf93d65c5fb6f1449a35acee698"
 
 require linux-aspeed.inc
