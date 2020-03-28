@@ -1,0 +1,9 @@
+# short-description: Create Aspeed SD card image
+# long-description: Creates a partitioned SD card image for use with
+# Aspeed SoC family. Boot files are located in the first ext4 partition.
+
+part /boot --ondisk mmcblk0 --source bootimg-partition --fstype=ext4 --label boot --fixed-size 128
+part / --ondisk mmcblk0 --source rootfs --fstype=ext4 --label root --fixed-size 1000
+part /alt --ondisk mmcblk0 --fstype=ext4 --label alt --fixed-size 1000
+part /var --ondisk mmcblk0 --fstype=ext4 --label var --fixed-size 1000
+part /host-fw --ondisk mmcblk0 --fstype=ext4 --label host-fw --size 2000
