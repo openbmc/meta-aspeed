@@ -1,0 +1,20 @@
+# short-description: Create Aspeed eMMC image
+# long-description: Creates an eMMC card image for the User Dat Area to use with
+# Aspeed SoC family.
+#
+# Assumes a minimum flash size of 14GB
+#
+#  ------------ -------- -------- -------- -------- ------ --------
+# | u-boot-env | boot-a | boot-b | rofs-a | rofs-b | rwfs | hostfw |
+#  ------------ -------- -------- -------- -------- ------ --------
+#      1MB        64MB     64MB     1GB      2GB     7GB     4GB
+ 
+bootloader --ptable gpt
+
+part --align 4 --fixed-size 1M --label u-boot-env
+part --fstype=ext4 --fixed-size 64M --source bootimg-partition --label boot-a
+part --fstype=ext4 --fixed-size 64M --source bootimg-partition --label boot-b
+part --fstype=ext4 --fixed-size 1G --source rootfs --label rofs-a
+part --fstype=ext4 --fixed-size 1G --source rootfs --label rofs-b
+part --fstype=ext4 --fixed-size 7G --label rwfs
+part --fstype=ext4 --fixed-size 4G --label hostfw
