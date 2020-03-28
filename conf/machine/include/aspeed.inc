@@ -13,6 +13,12 @@ KERNEL_CLASSES ?= "kernel-fitimage"
 INITRAMFS_IMAGE ?= "aspeed-image-initramfs"
 INITRAMFS_FSTYPES ?= "cpio.xz"
 
+WKS_FILE ?= "emmc-aspeed.wks.in"
+IMAGE_BOOT_FILES ?= " \
+    u-boot.${UBOOT_SUFFIX} \
+    fitImage-${INITRAMFS_IMAGE}-${MACHINE}-${MACHINE};fitImage \
+    "
+
 MACHINE_EXTRA_RRECOMMENDS += "udev-aspeed-vuart udev-aspeed-mtd-partitions"
 
 MACHINEOVERRIDES =. "aspeed:"
