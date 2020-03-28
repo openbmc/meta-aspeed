@@ -13,6 +13,9 @@ KERNEL_CLASSES ?= "kernel-fitimage"
 INITRAMFS_IMAGE ?= "aspeed-image-initramfs"
 INITRAMFS_FSTYPES ?= "cpio.xz"
 
+WKS_FILE ?= "sdimage-aspeed.wks.in"
+IMAGE_BOOT_FILES ?= ""
+
 MACHINE_EXTRA_RRECOMMENDS += "udev-aspeed-vuart udev-aspeed-mtd-partitions"
 
 MACHINEOVERRIDES =. "aspeed:"
