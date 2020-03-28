@@ -1,0 +1,6 @@
+# short-description: Create Aspeed eMMC image
+# long-description: Creates an eMMC card image for use with Aspeed SoC family.
+# Boot files are located in the first ext4 partition.
+
+part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=ext4 --label boot --active --align 4 --fixed-size 128
+part / --source rawcopy --ondisk mmcblk0 --sourceparams="file=${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.ext4.mmc"
