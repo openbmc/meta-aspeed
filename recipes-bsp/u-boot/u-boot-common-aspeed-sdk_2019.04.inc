@@ -11,6 +11,7 @@ PE = "1"
 SRCREV = "0991f0b8ae2eaad7d06977d2fabbb599f0d28a97"
 
 SRC_URI = "git://git@github.com/openbmc/u-boot.git;nobranch=1;protocol=https"
+SRC_URI += "file://0001-configs-Add-OpenBMC-spl-defconfig-for-AST2600-boards.patch"
 
 S = "${WORKDIR}/git"
 
