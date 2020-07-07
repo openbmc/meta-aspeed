@@ -5,7 +5,7 @@ DEPENDS += "mtd-utils"
 
 PROVIDES += "u-boot-fw-utils"
 
-SRC_URI += "file://fw_env_ast2600_nor.config"
+SRC_URI += "${@bb.utils.contains('DISTRO_FEATURES', 'phosphor-mmc', 'file://fw_env_ast2600_mmc.config', 'file://fw_env_ast2600_nor.config', d)}"
 
 INSANE_SKIP_${PN} = "already-stripped"
 EXTRA_OEMAKE_class-target = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${CC} ${CFLAGS} ${LDFLAGS}" HOSTCC="${BUILD_CC} ${BUILD_CFLAGS} ${BUILD_LDFLAGS}" V=1'
@@ -23,7 +23,12 @@ do_install () {
 	install -d ${D}${sysconfdir}
 	install -m 755 ${S}/tools/env/fw_printenv ${D}${base_sbindir}/fw_printenv
 	install -m 755 ${S}/tools/env/fw_printenv ${D}${base_sbindir}/fw_setenv
-	install -m 644 ${WORKDIR}/fw_env_ast2600_nor.config ${D}${sysconfdir}/fw_env.config
+
+	if ${@bb.utils.contains("DISTRO_FEATURES", "phosphor-mmc", "true", "false", d)}; then
+		install -m 644 ${WORKDIR}/fw_env_ast2600_mmc.config ${D}${sysconfdir}/fw_env.config
+	else
+		install -m 644 ${WORKDIR}/fw_env_ast2600_nor.config ${D}${sysconfdir}/fw_env.config
+	fi
 }
 
 do_install_class-cross () {
