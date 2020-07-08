@@ -14,7 +14,7 @@ INITRAMFS_IMAGE ?= "aspeed-image-initramfs"
 INITRAMFS_FSTYPES ?= "cpio.xz"
 
 WKS_FILE ?= "emmc-aspeed.wks.in"
-WKS_FILE_DEPENDS ?= "virtual/kernel"
+WKS_FILE_DEPENDS ?= "u-boot virtual/kernel"
 IMAGE_BOOT_FILES ?= "fitImage-${INITRAMFS_IMAGE}-${MACHINE}-${MACHINE};fitImage"
 
 MACHINE_EXTRA_RRECOMMENDS += "udev-aspeed-vuart udev-aspeed-mtd-partitions"
