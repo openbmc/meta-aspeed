@@ -1,0 +1,13 @@
+baudrate=115200
+bootargs=console=ttyS4,115200n8 root=/dev/ram rw
+bootside=a
+boota=setenv bootargs console=ttyS4,115200n8 root=PARTLABEL=rofs-a rootdelay=5; ext4load mmc 0:2 0x83000000 fitImage; bootm 0x83000000
+bootb=setenv bootargs console=ttyS4,115200n8 root=PARTLABEL=rofs-b rootdelay=5; ext4load mmc 0:3 0x83000000 fitImage; bootm 0x83000000
+bootcmd=if test "${bootside}" = "a"; then run boota; run bootb; else run bootb; run boota; fi
+bootdelay=2
+bootfile=all.bin
+gatewayip=192.168.0.1
+ipaddr=192.168.0.45
+netmask=255.255.255.0
+serverip=192.168.0.81
+verify=yes
