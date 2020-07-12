@@ -27,4 +27,4 @@ part --fstype=ext4 --fixed-size 64M --source bootimg-partition --label boot-b
 part --fstype=ext4 --fixed-size 1G --source rootfs --label rofs-a
 part --fstype=ext4 --fixed-size 1G --source rootfs --label rofs-b
 part --fstype=ext4 --fixed-size 7G --label rwfs
-part --fstype=ext4 --fixed-size 5G --label hostfw
+part --fstype=ext4 --fixed-size 5G --source rootfs --rootfs-dir=${STAGING_DIR_NATIVE}${datadir}/hostfw/image/ --label hostfw
