@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b7d34a_82b29a0b",
+        "filename": "recipes-kernel/linux/linux-aspeed.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2020-11-30T20:19:56Z",
+      "side": 1,
+      "message": "Moving this back into openbmc before merging?",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "4c5bfbb28a0e77ac7722cfe3359ff0cd1797089f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
