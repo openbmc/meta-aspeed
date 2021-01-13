@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b758915_3834d1da",
+        "filename": "recipes-aspeed/python/socsec_git.bb",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-01-13T15:22:27Z",
+      "side": 1,
+      "message": "I think you need to inherit python3native here otherwise we\u0027ll be looking for these packages in the build system python installation in the native or sdk environments.",
+      "revId": "e4aad188a99c6186726287b6a6d42d2a632e73b2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    }
+  ]
+}
