@@ -16,6 +16,24 @@
       "revId": "e4aad188a99c6186726287b6a6d42d2a632e73b2",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12f285bc_d534d349",
+        "filename": "recipes-aspeed/python/socsec_git.bb",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2021-01-18T03:00:26Z",
+      "side": 1,
+      "message": "Yes, I think you\u0027re right. It would be nice if `devtool add --also-native ...` would sort that out for us...",
+      "parentUuid": "4b758915_3834d1da",
+      "revId": "e4aad188a99c6186726287b6a6d42d2a632e73b2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     }
   ]
 }
