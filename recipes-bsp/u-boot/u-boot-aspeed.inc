@@ -68,6 +68,8 @@ UBOOT_EXTLINUX_INSTALL_DIR ?= "/boot/extlinux"
 UBOOT_EXTLINUX_CONF_NAME ?= "extlinux.conf"
 UBOOT_EXTLINUX_SYMLINK ?= "${UBOOT_EXTLINUX_CONF_NAME}-${MACHINE}-${PR}"
 
+DEPENDS += '${@oe.utils.conditional("UBOOT_SIGN_SPL", "1", " socsec-native", "", d)}'
+
 # returns all the elements from the src uri that are .cfg files
 def find_cfgs(d):
     sources=src_patches(d, True)
@@ -329,5 +331,27 @@ do_deploy () {
         ln -sf ${UBOOT_EXTLINUX_SYMLINK} ${DEPLOYDIR}/${UBOOT_EXTLINUX_CONF_NAME}
     fi
 }
-
 addtask deploy before do_build after do_compile
+
+do_sign_spl() {
+    if [ -n "${SPL_BINARY}" -a "${UBOOT_SIGN_SPL}" = "1" ]
+    then
+
+        if [ -n "${UBOOT_SIGN_SPL_SOCSEC_HELPER}" ]
+        then
+            signing_helper_args="--signing_helper ${UBOOT_SIGN_SPL_SOCSEC_HELPER}"
+        else
+            signing_helper_args=""
+        fi
+
+        socsec make_secure_bl1_image \
+            ${signing_helper_args} \
+            --algorithm RSA4096_SHA512 \
+            --rsa_sign_key ${UBOOT_SIGN_SPL_RSA_KEY} \
+            --bl1_image ${B}/${SPL_BINARY} \
+            --output ${B}/${SPL_BINARY}.staged
+
+        mv ${B}/${SPL_BINARY}.staged ${B}/${SPL_BINARY}
+    fi
+}
+addtask sign_spl before do_deploy after do_compile

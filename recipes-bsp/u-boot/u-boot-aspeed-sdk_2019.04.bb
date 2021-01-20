@@ -13,6 +13,11 @@ UBOOT_ENV_SIZE_df-phosphor-mmc = "0x10000"
 UBOOT_ENV_df-phosphor-mmc = "u-boot-env"
 UBOOT_ENV_SUFFIX_df-phosphor-mmc = "bin"
 
+SRC_URI += "file://rsa_oem_dss_key.pem;sha256sum=64a379979200d39949d3e5b0038e3fdd5548600b2f7077a17e35422336075ad4 \
+           file://rsa_pub_oem_dss_key.pem;sha256sum=40132a694a10af2d1b094b1cb5adab4d6b4db2a35e02d848b2b6a85e60738264"
+
+UBOOT_SIGN_SPL_RSA_KEY = "${WORKDIR}/rsa_oem_dss_key.pem"
+
 do_compile_append() {
     if [ -n "${UBOOT_ENV}" ]
     then
